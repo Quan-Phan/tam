@@ -1,0 +1,60 @@
+.form-check-label{
+	height: 30px;
+	font-size: 14px;
+}
+.form-check{
+	margin-left: 5px;
+}
+.form-car-suggest{
+	border-top: 2px #8B4513 solid;
+	border-bottom: 1px #DCDCDC solid;
+	border-right: 1px #DCDCDC solid;
+	border-left: 1px #DCDCDC solid;
+	padding-left: 10px;
+	margin-top: 20px;
+}
+.form-car-suggest h5{
+	padding-top: 8px;
+}
+.form_price1{
+	border: 1px #DCDCDC solid;
+}
+.col-3 h5{
+	color: #770000;
+}
+.col-3 a{
+	color: black;
+	font-size: 14px;
+	display: block
+}
+.col-3 span{
+	color: #FFD700;
+	font-weight: 500;
+}
+.media-body{
+	padding-left: 15px;
+}
+.media-body p{
+	color: #FFD700;
+	font-weight: 500;
+}
+.form_product{
+	border: 1px #DCDCDC solid;
+	padding: 10px;
+	margin-top: 15px;
+}
+.btn_cart{
+	position: absolute;
+	right: 25px;
+	bottom: 15px;
+	padding:3px;
+	background:#FFFFFF;
+	border: 1px #CDCDCD solid;	
+}
+.btn_cart:hover{
+	background: #B03060;
+}
+.btn_cart i:hover{
+	color: azure;
+}
+

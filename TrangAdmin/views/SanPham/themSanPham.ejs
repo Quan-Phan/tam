@@ -1,0 +1,114 @@
+<!doctype html>
+<html><head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/stylesheets/styleAdminSanPham.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script language="javascript" src="javascript/spAdmin.js"></script>
+    <title>Thêm sản phẩm</title>
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <%include ../menu.ejs%>
+        </div>
+        <div class="col-9">
+            <form class="form-header-sp">
+                <span class="custom-span">Thêm sản phẩm</span>
+
+                <div class="search-spAdmin">
+                    <span>Tìm kiếm</span>
+                    <input type="text">
+                </div>
+            </form>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <form class="form-them-sp" action="" method="post">
+                        <div class="form-group"style="width: 600px;">
+                            <label>Tên sản phẩm</label>
+                            <input type="text" class="form-control" name="txtTen" placeholder="Ferrari_123">
+                        </div>
+
+                        <div class="form-group"style="width: 600px;">
+                            <label>Giá bán</label>
+                            <input type="text" class="form-control" name="txtGiaBan" placeholder="1.000.000.000">
+                        </div>
+                        <div class="form-group"style="width: 600px;">
+                            <label>Số lượng</label>
+                            <input type="text" class="form-control" name="txtSoLuongHienCo" placeholder="4">
+                        </div>
+                        <div class="form-group"style="width: 600px;">
+                            <label>Xuất xứ</label>
+                            <input type="text" class="form-control" name="txtXuatXu" placeholder="XuatXu">
+                        </div>
+                        <div class="form-group"style="width: 600px;">
+                            <label>link ảnh</label>
+                            <input type="text" class="form-control" name="txtFilePathAnh" placeholder="/images/ferrari.jpg">
+                        </div>
+                        <div class="form-group" style="width: 600px;">
+                            <label>Mô tả</label>
+                            <input type="text" class="form-control" name="txtMoTa" placeholder="" style="height: 150px">
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-4">
+                                <label style="padding-left: 55px">Gợi ý loại sản phẩm</label>
+                            </div>
+                            <div class="col-3">
+                                <table class="table-custom">
+                                    <tbody>
+                                    <% var i=0 ;
+                                    for (i;i<data.themSanPhamPage.length;i++){
+                                    if(data.themSanPhamPage[i].checkdelete==0){%>
+                                    <tr>
+                                        <td><%=data.themSanPhamPage[i].id%> - </td>
+                                        <td><%=data.themSanPhamPage[i].name%></td>
+                                    </tr>
+                                    <%}}%>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-5">
+                                <label>Chọn id loại Sản phẩm</label><br>
+                                <input type="text" name="txtIdLoai" style="width: 30px;width: 50px;margin-left: 50px">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-4">
+                                <label style="padding-left: 55px">Gợi ý nhà sản xuất</label>
+                            </div>
+                            <div class="col-3">
+                                <table class="table-custom ">
+                                    <tbody>
+                                    <% var i=0 ;
+                                    for (i;i<data.listProducer.length;i++){%>
+                                    <%if(data.listProducer[i].checkdelete==0){%>
+                                    <tr>
+                                        <td><%=data.listProducer[i].id%> - </td>
+                                        <td><%=data.listProducer[i].name%></td>
+                                    </tr>
+                                    <%}}%>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-5">
+                                <label>Chọn id nhà sản xuất</label><br>
+                                <input type="text" name="txtIdNhaSX" style="width: 30px;width: 50px;margin-left: 50px">
+                            </div>
+                        </div>
+                        <input style="margin-left: 250px;margin-top: 20px; background-color: #2AB391; color: black; height: 50px;" type="submit" value="Thêm sản phẩm">
+                    </form>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

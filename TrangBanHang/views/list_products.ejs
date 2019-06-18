@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/styleheader.css" />
+    <link rel="stylesheet" href="/stylesheets/styleform.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <title><%= title%></title>
+</head>
+
+<body>
+<!--header-->
+<%include header.ejs%>
+<!--end header-->
+<!--body-->
+<div class="container">
+    <div class="row" style="padding-top: 100px">
+        <div class="col-3">
+            <form class="form-price1" action="" method="get" style="margin-top: 30px">
+                <hr/>
+                <hr/>
+                <span>LỌC THEO GIÁ :
+                    <select name="selectCost">
+                        <option value="1000000000"> Dưới 1 tỉ</option>
+                        <option value="1500000000"> Dưới 1,5 tỉ</option>
+                        <option value="3000000000"> Dưới 3 tỉ</option>
+                        <option value="10000000001"> Dưới 10 tỉ</option>
+                    </select>
+                </span>
+                <input type="submit" value="Lọc"/>
+                <hr/>
+                <hr/>
+
+            </form>
+            <form class="form-car-suggest">
+                <h5>XE GỢI Ý</h5>
+                <hr/>
+                <%if(data.list_product.length>3){%>
+                <%
+                    for(var j=0;j<3;j++){%>
+                    <div class="media">
+
+                                <div class="media-left">
+                                <img src="<%=data.list_product[j].filepathanh%>" class="media-object" style="width:80px">
+                                </div>
+                                <div class="media-body">
+                                    <a href="/detail_product/<%=data.list_product[j].id%>/<%=1%>">
+                                        <h6 class="media-heading"><%=data.list_product[j].ten%></h6>
+                                    </a>
+                                    <p><%=data.list_product[j].giaban%></p>
+                                </div>
+                        </div>
+                        <hr/>
+                        <%}%>
+               <% }%>
+            </form>
+        </div>
+        <div class="col-9">
+            <h5>Sản phẩm xe đẹp</h5>
+            <div class="row">
+                <%if(data.list_product.length>0){%>
+                    <%data.list_product.forEach(function (row) {%>
+                        <span>
+                            <form class="form_product" >
+                                <img src="<%=row.filepathanh%>" width="200px" height="150px">
+                                <br>
+                                <a class="text-center" style="color: black" href="/detail_product/<%=row.id%>/<%=1%>"><%=row.ten%></a>
+                                <br>
+                                <span style="color: #FFD700; font-size: 18px"><%= row.giaban%>
+                                    <a href="/addCart/<%=row.id%>">
+                                       <img src="/images/cart.png" style="height: 30px ; width: 30px; margin-left: 60px">
+                                    </a>
+
+                                </span>
+                            </form>
+                        </span>
+                <%})}else {%>
+                <p style="color: green">Không có sản phẩm</p>
+                <%}%>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <div class="row" style="margin-top: 30px">
+        <%if(gia==undefined){%>
+        <div class="col-3"></div>
+        <div class="col-9">
+            <h4 style="margin-bottom: 10px">Trang</h4>
+            <nav aria-label="Page navigation example">
+
+                <ul class="pagination">
+                    <%let i=1%>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="/list_products/<%=idNhaSX%>/<%=i%>"><%=i%></a></li>
+                    <li class="page-item"><a class="page-link" href="/list_products/<%=idNhaSX%>/<%=i+1%>"><%=i+1%></a></li>
+                    <li class="page-item"><a class="page-link" href="/list_products/<%=idNhaSX%>/<%=i+2%>"><%=i+2%></a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <%}%>
+    </div>
+</div>
+<!--end body-->
+<%include footer.ejs%>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!doctype html>
+<html><head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/stylesheets/styleAdminCuaHang.css" />
+    <link rel="stylesheet" href="/stylesheets/styleAdminTrangCaNhan.css" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>Admin</title>
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <%include ../menu.ejs%>
+        </div>
+        <div class="col-9">
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="col-6">
+                    <form class="form-personal">
+                        <h4>Thông tin cá nhân</h4>
+                        <img src="<%=user.link_anh%>">
+                        <div class="content">
+                            <span>Tên </span>
+                            <label name="Ten">&nbsp;&nbsp;&nbsp;<%=user.ten%>&nbsp;</label>
+                        </div>
+                        <div class="content">
+                            <span>Email </span>
+                            <label name="Email"><%=user.email%></label>
+                        </div>
+                        <button id="btn-edit-inf" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalEditInf">Chỉnh sửa thông tin</button>
+                        <button id="btn-edit-pass" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalEditPass">Đặt lại mật khẩu</button>
+                    </form>
+                </div>
+
+            </div>
+            <div class="modal fade" id="exampleModalEditInf" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h6 class="modal-title" id="exampleModalLabel">Chỉnh sửa thông tin</h6>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-Modal" id="form-ModalPost" action="/TrangCaNhan" method="POST">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="txtName" name="ten" placeholder="Họ và tên" value="<%=user.ten%>" >
+                                    <span id="noticeName"></span>
+                                    <input type="text" class="form-control" id="txtEmail" name="email" placeholder="Email" value="<%=user.email%>">
+                                    <span id="noticeUsername"></span>
+                                    <input type="text" class="form-control" id="txtAvt" placeholder="Link ảnh" name="nameLink" value="<%=user.link_anh%> ">
+                                    <span id="noticeUsername"></span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" onclick="form_submit()" class="btn btn-primary">Lưu</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="modal fade" id="exampleModalEditPass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h6 class="modal-title" id="exampleModalLabel">Đặt lại mật khẩu</h6>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-Modal" id="form-ModalPost1" action="/TrangCaNhan" method="POST">
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="txtOldPass" name="txtOldPass" placeholder="Mật khẩu cũ" >
+                                    <span id="noticeName"></span>
+                                    <input type="password" class="form-control" id="txtNewPass" name="txtNewPass" placeholder="Mật khẩu mới" >
+                                    <span id="noticeUsername"></span>
+                                    <input type="password" class="form-control" id="txtRetypeNewPass" name="txtRetypeNewPass" placeholder="Nhập lại mật khẩu mới" onkeyup="verifyChangePassAdmin();" >
+                                    <span id="noticeRetypeNewPass"></span>
+                                   <!-- <input type="hidden" id="inputtest" value="Log out">-->
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" onclick="form_submit1()" class="btn btn-primary">Lưu</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script language="javascript" src="/javascripts/ChangePass-verify.js"></script>
+<script>
+    function form_submit(){
+        document.getElementById("form-ModalPost").submit();
+    }
+    function form_submit1(){
+        document.getElementById("form-ModalPost1").submit();
+    }
+</script>
+</body>
+</html>

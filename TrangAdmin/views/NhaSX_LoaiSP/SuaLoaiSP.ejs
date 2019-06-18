@@ -1,0 +1,45 @@
+<!doctype html>
+<html><head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/stylesheets/styleAdminSanPham.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script language="javascript" src="javascript/spAdmin.js"></script>
+    <title>Sửa loại sản phẩm</title>
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <%include ../menu.ejs%>
+        </div>
+        <div class="col-9">
+            <form class="form-header-sp">
+                <span class="custom-span">Sửa loại sản phẩm</span>
+
+                <div class="search-spAdmin">
+                    <span>Tìm kiếm</span>
+                    <input type="text">
+                </div>
+            </form>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <form class="form-them-sp" action="" method="post">
+                        <div class="form-group"style="width: 600px;">
+                            <label>Tên loại sản phẩm</label>
+                            <input type="text" class="form-control" name="txtName" value="<%=data.category[0].name%>">
+                        </div>
+                        <input style="margin-left: 250px;margin-top: 20px; background-color: #2AB391; color: black; height: 50px;" type="submit" value="Sửa loại sản phẩm">
+                    </form>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/styleheader.css" />
+    <link rel="stylesheet" href="/stylesheets/styleform.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <title>Trang chủ</title>
+</head>
+<body>
+<%include header.ejs%>
+<div class="container" id="rowdk">
+    <div class="row" >
+        <div class="col-xl-3"></div>
+        <div class="col-xl-6">
+            <form id="form_profile">
+                <span class="text-center" id="text" style="color: darkcyan; font-size: 30px">Thông tin cá nhân
+                    <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> <img class="text-center" id="edit" src="/images/edit.PNG"></button>
+                      <!--  id="btn-addTK-ch"-->
+                </span>
+                <hr>
+                <div class="row">
+                    <div class="col-xl-6">
+                        <img id="image" src="<%=user.link_anh%>" style="height: 300px;width: 200px;margin-bottom: 50px">
+                    </div>
+                    <div class="col-xl-6" id="content" style="margin-top: 50px">
+
+                        <p style="font-size: 20px">Họ Tên: </p>
+                        <p style="font-size: 18px;color: #2AB391"><%=user.ten%></p>
+                        <hr>
+                        <p style="font-size: 20px;margin-top: 5px">Email:</p>
+                        <p style="font-size: 18px;color: #2AB391;margin-top: 5px"><%=user.email%></p>
+                        <hr>
+                        <a  type="button" data-toggle="modal" data-target="#exampleModal1" style="width: 125px;height: 30px;color: white;background-color: #25AEE4">  Đặt lại mật khẩu</a>
+                        <hr>
+                        <%if(thongbao!="abc"){%>
+                            <p style="color: red"><%=thongbao%></p>
+                            <p>Mật khẩu chưa được thay đổi</p>
+                        <%}%>
+                        <hr>
+                    </div>
+                </div>
+            </form>
+
+            <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h6 class="modal-title" id="exampleModalLabel" style="color: red">Đặt lại mật khẩu</h6>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-Modal" id="form-ModalPost" action="/my_profile" method="POST">
+                                <div class="form-group">
+                                    <label>Mật khẩu cũ </label>
+                                    <input type="password" class="form-control" name="oldPass" placeholder="Old password ">
+                                    <span id="noticeName"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Mật khẩu mới</label>
+                                    <input type="password" class="form-control" id="txtPassWord" name="newPass" placeholder="New password" onkeyup=verifyPassword()>
+                                    <span id="noticePassword"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Nhập lại mật khẩu mới </label>
+                                    <input type="password" class="form-control" id="txtPassWordAgain" name="newPassAgain" placeholder="New password again" onkeyup=verifyRetypePassword()>
+                                    <span id="noticeRetypePassword"></span>
+                                </div>
+
+                                <input type="submit" value="Lưu" style="background-color: #d4d4d4; color: black;margin-left: 200px;width: 100px;border: black 1px solid">
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h6 class="modal-title" id="exampleModalLabel" style="color: red">Chỉnh sửa thông tin cá nhân</h6>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-Modal" id="form-ModalPost" action="/my_profile" method="POST">
+                                <div class="form-group">
+                                    <label>Họ và tên: </label>
+                                    <input type="text" class="form-control" id="txtName" name="ten" placeholder="<%=user.ten%> ">
+                                    <span id="noticeName"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email: </label>
+                                    <input type="text" class="form-control" id="txtEmail" name="email" placeholder="<%=user.email%>" >
+                                    <span id="noticeUsername"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Link ảnh: </label>
+                                    <input type="text" class="form-control" id="txtAvt" placeholder="<%=user.link_anh%>" name="link_anh" >
+                                    <span id="noticeUsername"></span>
+                                </div>
+
+                                <input type="submit" value="Lưu" style="background-color: #25AEE4; color: white;margin-left: 180px;margin-top: 10px;width: 100px;border: green 1px solid">
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>-->
+<!--                            <button type="button" onclick="form_submit()" class="btn btn-primary">Lưu</button>-->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Modal -->
+        </div>
+        <div class="col-xl-3"></div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-xl-1"></div>
+        <div class="col-xl-10">
+            <form style="background-color: #DCDCDC;border: #25AEE4 2px solid;border-radius: 10px;padding: 10px">
+                <h4 style="color: #2AB391;margin: 20px">Lịch sử mua hàng của bạn</h4>
+                <hr>
+                <table class="table table-striped">
+                    <thead>
+                    <tr style="background-color: #888888;border: #2AB391 3px solid">
+                        <th style="border: #2AB391 3px solid; border-bottom: hidden;" scope="col">Mã đơn hàng</th>
+                        <th style="border: #2AB391 3px solid; border-bottom: hidden; "scope="col">Ngày mua hàng</th>
+                        <th style="border: #2AB391 3px solid; border-bottom: hidden;"scope="col">Tổng tiền đã thanh toán</th>
+                        <th style="border: #2AB391 3px solid; border-bottom: hidden;"scope="col">Trạng thái đơn hàng</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <%if(data.list_order){%>
+                        <%for(let i=0;i<data.list_order.length;i++){%>
+                            <tr>
+                                <td style="border: #2AB391 3px solid; border-bottom: hidden"><%=data.list_order[i].id%></td>
+                                <td style="border: #2AB391 3px solid; border-bottom: hidden"><%=data.list_order[i].ngaydathang%></td>
+                                <td style="border: #2AB391 3px solid; border-bottom: hidden"><%=data.list_order[i].thanhtoan%></td>
+                                <td style="border: #2AB391 3px solid; border-bottom: hidden"><%=data.list_order[i].trangthai%></td>
+                            </tr>
+                        <%}%>
+                    <%}%>
+                    </tbody>
+                </table>
+            </form>
+
+        </div>
+        <div class="col-xl-1"></div>
+    </div>
+</div>
+<%include footer.ejs%>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script language="javascript" src="/javascripts/signUp-verify.js"></script>
+</body>
+</html>

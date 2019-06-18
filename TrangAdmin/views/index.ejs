@@ -1,0 +1,197 @@
+<!doctype html>
+<html><head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/stylesheets/styleAdminIndex.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <title>Admin</title>
+</head>
+
+<body>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3">
+      <%include menu.ejs%>
+    </div>
+    <div class="col-9">
+        <div class="row">
+            <div class="col-10"></div>
+            <div class="col-2">
+                <%include NguoiDungmenu.ejs%>
+            </div>
+        </div>
+		<!--modal hiện ra lúc thêm tài khoản-->
+		<!-- Button trigger modal -->
+			<button id="btn-addTK-ch" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+			  Thêm tài khoản
+			</button>
+
+			<!-- Modal -->
+			
+				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+					
+					<div class="modal-content">
+					  <div class="modal-header">
+						<h6 class="modal-title" id="exampleModalLabel">Tài khoản mới</h6>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						  <span aria-hidden="true">&times;</span>
+						</button>
+					  </div>
+					  <div class="modal-body">
+						  <form class="form-Modal" id="form-ModalPost" action="/TaiKhoan" method="POST">
+							<div class="form-group">
+                                <input style="border: black 1px solid" type="text" class="form-control" id="txtUserName" name="nameUsername" placeholder="Tên đăng nhập" >
+								<span id="noticeUsername"></span>
+								<input style="border: black 1px solid"type="password" class="form-control" id="txtPassword" name="namePass" placeholder="Mật khẩu" >
+								<span id="noticePassword"></span>
+								<input style="border: black 1px solid"type="password" class="form-control" id="txtRetypePass" name="nameRetypePass"placeholder="Xác nhận  mật khẩu" >
+								<span id="noticeURetypePass"></span>
+								<input style="border: black 1px solid"type="text" class="form-control" id="txtName" name="nameName" placeholder="Tên ">
+								<span id="noticeName"></span>
+								<input style="border: black 1px solid"type="text" class="form-control" id="txtEmail" name="nameEmail" placeholder="Email" >
+								<span id="noticeUsername"></span>
+								<input style="border: black 1px solid"type="text" class="form-control" id="txtAvt" placeholder="Link ảnh" name="nameLink" >
+								<span id="noticeUsername"></span>
+								<input style="border: black 1px solid"id="typeKH" type="radio" value="QL" name="typeOfAcc" checked=>Quản lý</input>
+								<input style="border: black 1px solid"id="typeQL" type="radio" value="KH" name="typeOfAcc">Khách hàng</input>
+						  		<!--<input type="submit" onclick="form_submit()">-->
+							 </div>	
+						</form>
+					  </div>
+					  <div class="modal-footer">
+						<!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>-->
+						<button type="button" onclick="form_submit()" class="btn btn-primary">Lưu</button>
+					  </div>
+					</div>
+				
+				  </div>
+				</div>
+
+
+			<h5>Những tài khoản Quản Lý khác</h5>
+     		 
+            <form class="form-content-tk">
+                <table id="tableAccountKH" class="table">
+                    <thead>
+                    <tr style="background-color: #888888;height: 60px">
+                        <th style="color: black" scope="col" width="5%;">STT</th>
+                        <th style="color: black"scope="col" width="30%;">Email</th>
+                        <th style="color: black"scope="col" width="25%;">Tên khách  hàng</th>
+                        <th style="color: black"scope="col" width="15%;">Tên tài khoản</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+					<%let i=0;
+					for(i;i<data.listAccount.length;i++){%>
+						<%if(data.listAccount[i].loai_tai_khoan==1 && data.listAccount[i].ten_dang_nhap != user.ten_dang_nhap){%>
+                            <%if(data.listAccount[i].khoa==0){%>
+                            <tr>
+                                <th style="color: black"scope="row"><%=data.listAccount[i].id%></th>
+                                <td style="color: black"><%=data.listAccount[i].email%></td>
+                                <td style="color: black"><%=data.listAccount[i].ten%></td>
+                                <td style="color: black"><%=data.listAccount[i].ten_dang_nhap%></td>
+                            </tr>
+                            <%}else {%>
+                            <tr style="background-color: red">
+                                <th style="color: white"scope="row"><%=data.listAccount[i].id%></th>
+                                <td style="color: white"><%=data.listAccount[i].email%></td>
+                                <td style="color: white"><%=data.listAccount[i].ten%></td>
+                                <td style="color: white"><%=data.listAccount[i].ten_dang_nhap%></td>
+                            </tr>
+                            <%}%>
+						<%}%>
+					<%}%>
+                    </tbody>
+                </table>
+            </form>
+			<h5>Tài Khoản Khách Hàng</h5>
+			<form class="form-content-tk">
+                <table id="tableAccountKH" class="table">
+                    <thead>
+                    <tr style="background-color: #888888;height: 60px">
+                        <th style="color: black"scope="col" width="5%;">STT</th>
+                        <th style="color: black"scope="col" width="30%;">Email</th>
+                        <th style="color: black"scope="col" width="25%;">Tên quản lý</th>
+                        <th style="color: black"scope="col" width="15%;">Tên tài khoản</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                   <%let j=0;
+					for(j;j<data.listAccount.length;j++){%>
+						<%if(data.listAccount[j].loai_tai_khoan==0){%>
+                            <%if(data.listAccount[j].khoa==0){%>
+                               <tr>
+                                   <th style="color: black"scope="row"><%=data.listAccount[j].id%></th>
+                                   <td style="color: black"><%=data.listAccount[j].email%></td>
+                                   <td style="color: black"><%=data.listAccount[j].ten%></td>
+                                   <td style="color: black"><%=data.listAccount[j].ten_dang_nhap%></td>
+                               </tr>
+                            <%}else {%>
+                               <tr style="background-color: red">
+                                   <th style="color: white"scope="row"><%=data.listAccount[j].id%></th>
+                                   <td style="color: white"><%=data.listAccount[j].email%></td>
+                                   <td style="color: white"><%=data.listAccount[j].ten%></td>
+                                   <td style="color: white"><%=data.listAccount[j].ten_dang_nhap%></td>
+                               </tr>
+						<%}}%>
+					<%}%>   
+                    </tbody>
+                </table>
+            </form>
+
+        <div class="modal" id="exampleModalInfAccount" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog" role="document">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h6 class="modal-title" id="exampleModalLabel">Thông tin tài khoản</h6>
+                        <button type="button" onclick="closeModalInfAccount()" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-Modal" id="form-ModalPost">
+                            <form action="/TaiKhoan" method="post">
+                                <input style="background-color: #00BFFF" type="submit" value="Khóa / Mở TK ">
+                                <input style="width: 40px" name="id" id="idInf" value="idInf">
+                            </form>
+                            <div class="form-group">
+
+                                <img id="imgInf">
+                                <div>
+                                    <span>Tên</span>
+                                    <input id="nameInf"/>
+                                </div>
+                                <div>
+                                    <span>Email</span>
+                                    <input id="emailInf"/>
+                                </div>
+                                <div>
+                                    <span>Tên đăng nhập</span>
+                                    <input id="userInf"/>
+                                </div>
+                                <!--<input type="submit" onclick="form_submit()">-->
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+		
+    </div>
+  </div>
+</div>
+<script>
+	function form_submit(){
+		document.getElementById("form-ModalPost").submit();
+	}
+</script>
+<script src="/javascripts/clickTableAccount.js"></script>
+</body>
+</html>

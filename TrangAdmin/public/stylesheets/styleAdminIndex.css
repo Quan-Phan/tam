@@ -1,0 +1,145 @@
+/* CSS Document */
+.form-left{
+	/*border-right: 1px #DCDCDC solid;*/
+	height: 100vh;
+}
+.form-selection{
+	margin-top: 20px;
+}
+.media-body{
+	margin-left: 20px;
+	margin-top: 5px;
+}
+.media-heading{
+	color: #808080;
+}
+.media-heading:hover{
+	color: #00BFFF;
+}
+.media-object1:hover{
+	content: url("../images/user-blue.png");
+}
+.media-object2:hover{
+	content: url("../images/shop-store-blue.png");
+}
+.media-object3:hover{
+	content: url("../images/box-closed-blue.png");
+}
+.media-object4:hover{
+	content: url("../images/bill-blue.png");
+}
+.media-object5:hover{
+	content: url("../images/diagram-blue.png");
+}
+.col-9{
+	background:#F3FAF9;
+}
+.form-content{
+	margin-top: 120px;
+	background: #FFFFFF;
+	height: 100vh;
+	margin-bottom: 120px;
+}
+.form-content td, th{
+	color: #808080;
+}
+.form-content-tk{
+	background: #FFF;
+	margin-top: 30px;
+}
+/*scroll table*/
+
+.table{
+	width: 100%;
+	height: 300px;
+	display: block;
+	overflow-y: scroll;
+}
+.table td{
+	height: 20px;
+}
+.table thead{
+	width: 150%;
+}
+/*end scroll*/
+#btn-addTK-ch{
+	border:0;
+	font-size:14px;
+	background-color:#2AB391;
+	color:#FFF;
+	width:auto;
+	height:30px;
+	border-radius:5px;
+	font-weight:500;
+	float: right;
+	margin-bottom: 15px;
+	margin-top: 55px;
+	margin-right: 15px;
+	display: inline;
+}
+#btn-addTK-ch:hover{
+	background-color: #FFF;
+	color: #2AB391;
+}
+.col-9 h5{
+	margin-top: 100px;
+	color: #CD5C5C;
+}
+.form-group input{
+	margin-top: 20px;
+}
+.form-group span{
+	color: red;
+}
+#typeKH{
+	margin-left: 20px;
+}
+#typeQL{
+	margin-left: 30px;
+}
+/*css nguoidungmenu*/
+.form-top{
+	width: 100%;
+
+
+}
+
+.dropdown-toggle, .dropdown-menu { width: 70px }
+
+.btn-group button{
+	float:right;
+}
+.btn-group img { margin-right: 0px; margin-bottom: 10px; }
+.dropdown-toggle { padding-right: 50px }
+.dropdown-menu>li>a:hover { background: #f1f9fd } /* $search-blue */
+.dropdown-header { background: #fff; font-size: 14px; font-weight: 700; padding-top: 5px; padding-bottom: 5px; margin-top: 10px; margin-bottom: 5px }
+#exampleModalInfAccount{
+	background-color: rgba(0,0,0,0.5);
+}
+#imgInf{
+	width: 150px;
+	height: 150px;
+	margin-left: 33%;
+	margin-top: 20px;
+}
+.form-group span{
+	color: black;
+	margin-left: 20%;
+}
+.form-group input{
+	border: 1px solid #FFFFFF;
+	color: #8B4513;
+
+}
+#idInf{
+	margin-left: 80px;
+}
+#nameInf{
+	margin-left: 95px;
+}
+#emailInf{
+	margin-left: 80px;
+}
+#userInf{
+	margin-left: 13px;
+}

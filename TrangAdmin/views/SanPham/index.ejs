@@ -1,0 +1,115 @@
+<!doctype html>
+<html><head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/stylesheets/styleAdminSanPham.css" />
+    <link rel="stylesheet" href="/stylesheets/styleAdminIndex.css" />
+    <script language="javascript" src="javascript/spAdmin.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <title>Them san pham</title>
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <%include ../menu.ejs%>
+        </div>
+        <div class="col-9">
+            <div class="row">
+                <div class="col-10"></div>
+                <div class="col-2">
+                    <%include ../NguoiDungmenu.ejs%>
+                </div>
+            </div>
+            <form class="form-header-sp">
+                <span class="custom-span">Danh sách sản phẩm</span>
+
+                <div class="search-spAdmin">
+                    <span>Tìm kiếm</span>
+                    <input type="text">
+                </div>
+            </form>
+            <span style="margin-left: 400px">
+                <a href="/themSanPham"><button style="margin-top: 10px;background-color: #2AB391;width: 170px;color: black;height: 40px">Thêm sản phẩm</button></a>
+            </span>
+            <form class="form-content-sp">
+                <% var j=0;
+                for (j;j<data.listProducer.length;j++){%>
+                <%if(data.listProducer[j].checkdelete==0){%>
+                <h3 style="color: #FFD700"><%=data.listProducer[j].name%></h3>
+                <table class="table" id="tableSP">
+                    <thead>
+                    <tr>
+                        <th scope="col" width="10%;">Id</th>
+                        <th scope="col" width="30%;">Tên sản phẩm</th>
+                        <th scope="col" width="25%;">Giá bán</th>
+                        <th scope="col" width="15%;">Hình ảnh</th>
+                        <th scope="col" width="15%;">Số lượng</th>
+                        <th scope="col" width="30%;"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% var i=0;
+                    for (i;i<data.listProduct.length;i++){ %>
+                    <%if(data.listProduct[i].idNhaSX==data.listProducer[j].id){%>
+                    <tr>
+                        <th scope="row"><%=data.listProduct[i].id%></th>
+                        <td><%=data.listProduct[i].ten%></td>
+                        <td><%=data.listProduct[i].giaban%></td>
+                        <td><img src="<%=data.listProduct[i].filepathanh%>" style="width: 60px;"/></td>
+                        <td><%=data.listProduct[i].soluonghienco%></td>
+                        <td>
+                            <a href="/Delete/<%=data.listProduct[i].id%>"><img src="/images/delete.png" height="15px" width="15px"></a>
+                            <a href="/SuaSP/<%=data.listProduct[i].id%>"><img src="/images/edit.png" height="15px" width="15px"></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                    <%}}%>
+                </table>
+
+                <hr>
+                <%}}%>
+            </form>
+            <div class="modal" id="exampleModalAddImage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" role="document">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h6 class="modal-title" id="exampleModalLabel">Thêm hình ảnh</h6>
+                            <button type="button" onclick="closeModalAddProduct()" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-Modal" id="form-ModalPost" action="" method="POST" onsubmit="return false">
+                                <div id="divLinkImg" class="form-groupAdd">
+                                    <input class="linkImg" placeholder="Nhập link ảnh">
+                                </div>
+                                <hr>
+                                <div class="modal-footerAdd"><button id="btnAddImg">
+                                        <img src="../images/plus.png">
+                                    </button>
+                                </div>
+                                <button id="btnGui">Gửi</button>
+
+
+
+
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/javascripts/clickTableProduct.js"></script>
+</body>
+</html>
