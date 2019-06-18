@@ -1,0 +1,67 @@
+<!doctype html>
+<html><head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/stylesheets/styleAdminThongKe.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script language="javascript" src="/javascripts/chart.js"></script>
+    <script language="javascript" src="/javascripts/datepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+
+    <title>Admin</title>
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <%include menu.ejs%>
+        </div>
+        <div class="col-9">
+            <form class="form-header-tk">
+                <span class="custom-span">Thống  kê</span>
+                <div class="search-spAdmin">
+						<img src="images/search1.png" width="20px;">
+						<input type="text">	
+				</div>
+            </form>
+            <form class="form-content-tk">
+                <h6>1. Thống kê doanh số theo ngày</h6>
+                <input type="date" id="dateDay">
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-8" style="background: white;">
+                        <canvas id="piechartDay"></canvas>
+                    </div>
+                </div>
+
+                <h6>2. Thống kê doanh số theo tháng</h6>
+                <input id="month" type="month" value="2011-01-13"/>
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-8" style="background: white;">
+                        <canvas id="piechartMonth"></canvas>
+                    </div>
+                </div>
+
+                <h4>TOP 10 BÁN CHẠY</h4>
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-8" style="background: white;">
+                        <canvas id="barchartBestSeller"></canvas>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

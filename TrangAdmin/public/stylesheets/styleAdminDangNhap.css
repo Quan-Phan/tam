@@ -1,0 +1,59 @@
+body{
+	background-image: url("../images/backgroudSignIn.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.coverBackground{
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0,0,0,0.5);
+}
+.formSignIn-Admin{
+	height: auto;
+	border: 1px solid #DCDCDC;
+	margin-top: 100px;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	
+}
+.formSignIn-Admin h4{
+	text-align: center;
+	color: #00B2EE;
+	margin-bottom: 50px;
+}
+.formSignIn-Admin input{
+	width: 80%;
+	margin-left: 30px;	
+	display: block;
+	margin-top: 20px;
+	border-radius: 5px;
+	border: 1px solid #E0D7D7;
+	text-align: center;
+}
+.formSignIn-Admin button{
+	width: auto;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: 140px;
+	margin-top: 50px;
+	border:0;
+	font-size:14px;
+	background-color:#2AB391;
+	color:#FFF;
+	height:30px;
+	border-radius:5px;
+	font-weight:500;
+	display: block;
+}
+.formSignIn-Admin button:hover{
+	background-color: #FFF;
+	color: #2AB391;
+	border: 1px solid #DCDCDC;
+}
+.formSignIn-Admin span{
+	color: red;
+	margin-left: 30px;
+}
+
+
+

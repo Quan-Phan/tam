@@ -1,0 +1,65 @@
+.form-personal{
+	height: auto;
+	border: 1px solid #DCDCDC;
+	margin-top: 100px;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	background: #FFFFFF;
+}
+.form-personal h4{
+	text-align: center;
+	color: #00B2EE;
+
+}
+.form-personal img{
+	width: 150px;
+	height: 200px;
+	margin-left: 30%;
+	margin-top: 0px;
+}
+.content{
+	margin-top: 10px;
+	margin-left: 70px;
+	font-size: 16pt;
+}
+.content label{
+	margin-left: 20px;
+	color: #8B4513;
+}
+#btn-edit-inf{
+	border:0;
+	font-size:14px;
+	background-color:#2AB391;
+	color:#FFF;
+	width:150px;
+	height:30px;
+	border-radius:5px;
+	font-weight:500;
+	margin-bottom: 15px;
+	margin-left: 10%;
+	margin-top: 10px;
+}
+#btn-edit-inf:hover{
+	background-color: #FFF;
+	color: #2AB391;
+}
+#btn-edit-pass{
+	border:0;
+	font-size:14px;
+	background-color:#2AB391;
+	color:#FFF;
+	width:150px;
+	height:30px;
+	border-radius:5px;
+	font-weight:500;
+	margin-bottom: 15px;
+	margin-left: 10%;
+	margin-top: 10px;
+}
+#btn-edit-pass:hover{
+	background-color: #FFF;
+	color: #2AB391;
+}
+.form-group input{
+	margin-top: 20px;
+}

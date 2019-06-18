@@ -1,0 +1,110 @@
+<!doctype html>
+<html><head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/stylesheets/styleAdminCuaHang.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <title>Admin</title>
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <%include ../menu.ejs%>
+        </div>
+
+
+        <div class="col-9">
+            <div class="row">
+                <div class="col-10"></div>
+                <div class="col-2">
+                    <%include ../NguoiDungmenu.ejs%>
+                </div>
+            </div>
+            <form class="form-header-ch">
+                <span class="custom-span">Hệ thống các cửa hàng</span>
+                <div class="search-spAdmin">
+                    <span>Tìm kiếm</span>
+                    <input type="text">
+                </div>
+            </form>
+
+            <button class="btn-addCH-ch" type="button" data-toggle="modal" data-target="#exampleModal">Thêm cửa hàng</button>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h6 class="modal-title" id="exampleModalLabel">Thêm cửa hàng</h6>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-Modal" id="form-ModalPost" action="/CuaHang" method="POST">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="idAddr" name="nameAddr" placeholder="Địa chỉ cửa hàng" >
+                                    <span id="noticeAddr"></span>
+                                    <input type="text" class="form-control" id="idQL" name="nameQL" placeholder="Người quản lý" >
+                                    <span id="noticeQL"></span>
+                                    <input type="text" class="form-control" id="idPhone" name="namePhone"placeholder="Số điện thoại liên lạc" >
+                                    <span id="noticePhone"></span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" onclick="form_submit()" class="btn btn-primary">Lưu</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <form class="form-content-ch">
+                <% if(data.listStore.length>0){%>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col" width="5%;">STT</th>
+                        <th scope="col" width="30%;">Địa chỉ cửa hàng</th>
+                        <th scope="col" width="25%;">Số điện thoại liên lạc</th>
+                        <th scope="col" width="15%;">Tên quản lý</th>
+                        <th scope="col" width="15%"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+					<% let i=0;
+					for(i;i<data.listStore.length;i++){%>
+                   
+                    <tr>
+                        <th scope="row"><%=data.listStore[i].id%></th>
+                        <td><%=data.listStore[i].diachi%></td>
+                        <td><%=data.listStore[i].sodienthoai%></td>
+                        <td><%=data.listStore[i].quanly%></td>
+                        <td>
+                            <a href="/XoaCuaHang/<%=data.listStore[i].id%>"><img src="/images/delete.png" height="15px" width="15px"></a>
+                            <a href="/SuaCuaHang/<%=data.listStore[i].id%>"><img src="/images/edit.png" height="15px" width="15px"></a>
+                        </td>
+                    </tr>
+                   <%}%>
+                    </tbody>
+                </table>
+                <%}%>
+            </form>
+
+        </div>
+    </div>
+</div>
+<script>
+    function form_submit(){
+        document.getElementById("form-ModalPost").submit();
+    }
+</script>
+</body>
+</html>

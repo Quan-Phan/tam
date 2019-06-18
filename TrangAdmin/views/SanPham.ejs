@@ -1,0 +1,117 @@
+<!doctype html>
+<html><head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/stylesheets/styleAdminSanPham.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script language="javascript" src="javascript/spAdmin.js"></script>
+    <title>Admin</title>
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <%include menu.ejs%>
+        </div>
+        <div class="col-9">
+            <form class="form-header-sp">
+                <span class="custom-span">Danh sách sản phẩm</span>
+
+                <div class="search-spAdmin">
+						<img src="images/search1.png" width="20px;">
+						<input type="text">	
+				</div>
+            </form>
+			<button class="btn-addCH-ch">Thêm sản phẩm</button>
+            <h5>Dòng xe Ferrari</h5>
+            <form class="form-content-sp">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col" width="15%;">STT</th>
+                        <th scope="col" width="30%;">Tên sản phẩm</th>
+                        <th scope="col" width="25%;">Giá bán</th>
+                        <th scope="col" width="15%;">Hình ảnh</th>
+                        <th scope="col" width="20%;">Tình trạng</th>
+                        <th scope="col" width="20%;"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Buggati  Veyron</td>
+                        <td>1.800.000$</td>
+                        <td><img src="/images/buggati.png" style="width: 40px;"/></td>
+                        <td>Còn hàng</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Roll Royce</td>
+                        <td>2.800.000$</td>
+                        <td><img src="/images/rollroyce.png" style="width: 40px;"/></td>
+                        <td>Hết hàng</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Ferrari 488GTB</td>
+                        <td>3.800.000$</td>
+                        <td><img src="/images/ferrari.png" style="width: 40px;"/></td>
+                        <td>Còn hàng</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </form>
+            <h5>Dòng xe Buggati</h5>
+            <form class="form-content-sp">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col" width="15%;">STT</th>
+                        <th scope="col" width="30%;">Tên sản phẩm</th>
+                        <th scope="col" width="25%;">Giá bán</th>
+                        <th scope="col" width="15%;">Hình ảnh</th>
+                        <th scope="col" width="20%;">Tình trạng</th>
+                        <th scope="col" width="20%;"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Buggati  Veyron</td>
+                        <td>1.800.000$</td>
+                        <td><img src="/images/buggati.png" style="width: 40px;"/></td>
+                        <td>Còn hàng</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Roll Royce</td>
+                        <td>2.800.000$</td>
+                        <td><img src="/images/rollroyce.png" style="width: 40px;"/></td>
+                        <td>Hết hàng</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Ferrari 488GTB</td>
+                        <td>3.800.000$</td>
+                        <td><img src="/images/ferrari.png" style="width: 40px;"/></td>
+                        <td>Còn hàng</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>Buggati 488</td>
+                        <td>5.800.000$</td>
+                        <td><img src="/images/ferrari.png" style="width: 40px;"/></td>
+                        <td>Còn hàng</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
